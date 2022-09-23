@@ -8,7 +8,7 @@ const SearchForm: React.FC = () => {
   }
 
   const handleChange = (e: any) => {
-    console.log(e.target.value);
+    setAPIName(e.target.value);
   }
 
   return (
