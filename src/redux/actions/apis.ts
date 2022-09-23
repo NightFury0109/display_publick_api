@@ -1,13 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, ThunkAction, AnyAction } from "@reduxjs/toolkit";
 
 import api from "../../utils/api";
+import { RootState } from '../store';
 
 export interface APIState {
-  data: Array<object>
+  data: Array<object>,
+  result: Array<object>
 }
 
 const initialState: APIState = {
-  data: []
+  data: [],
+  result: []
 };
 
 const apis = createSlice({
@@ -22,11 +25,11 @@ const apis = createSlice({
 
 export const { setData } = apis.actions;
 
-export const getApis = () => async dispatch => {
+export const getApis = (): ThunkAction<void, RootState, unknown, AnyAction> => async dispatch => {
   try {
-    console.log("Success");
     const res = await api.get("/entries");
     console.log(res.data.entries);
+    dispatch(setData(res.data.entries));
   } catch (error) {
     console.log(error);
   }

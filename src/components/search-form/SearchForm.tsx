@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+
 const SearchForm: React.FC = () => {
   const [api_name, setAPIName] = useState();
 
@@ -12,7 +14,7 @@ const SearchForm: React.FC = () => {
   }
 
   return (
-    <form className='w-full sm:w-1/3' onSubmit={onSearch}>
+    <form className='' onSubmit={onSearch}>
       <label htmlFor='api_name' className='block text-xl font-bold mb-5'>Search for a Public API</label>
       <input
         type="text"
