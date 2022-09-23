@@ -2,10 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 // import logger from "redux-logger";
 
-import apis from ".//reducers/apisReducer";
-
-let middleware = getDefaultMiddleware => getDefaultMiddleware();
-// let middleware = getDefaultMiddleware => getDefaultMiddleware().concat(logger);
+import apis from "./actions/apis";
 
 
 const rootReducer = combineReducers({
@@ -13,8 +10,9 @@ const rootReducer = combineReducers({
 });
 
 const store = configureStore({
-  middleware,
   reducer: rootReducer
 });
 
 export default store;
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

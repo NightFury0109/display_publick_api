@@ -4,13 +4,16 @@ import { Provider } from 'react-redux';
 import './App.scss';
 
 import store from './redux/store';
+import { useAppDispatch } from './redux/hooks';
 import { getApis } from './redux/actions/apis';
 
 import SearchAPI from './pages/SearchAPI';
 
 const App: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    getApis();
+    dispatch(getApis());
   }, []);
 
   return (
