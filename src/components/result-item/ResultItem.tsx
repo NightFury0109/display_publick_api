@@ -1,10 +1,16 @@
 import React from 'react';
 
-const ResultItem: React.FC = () => {
+import { APIData } from '../../types';
+
+interface RProps {
+  item: APIData
+}
+
+const ResultItem: React.FC<RProps> = ({ item }: RProps) => {
   return (
     <div className='mb-3'>
-      <p className='text-base font-medium'>Cats</p>
-      <p className='text-sm my-2'>adfsa sadfsadf</p>
+      <a href={item.Link} target="_blank" rel="noreferrer" className='text-sm font-medium'>{item.API}</a>
+      <p className='text-sm my-2'>{item.Description}</p>
       <hr className=' text-black' />
     </div>
   )

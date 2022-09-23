@@ -12,7 +12,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(getApis());
-    // getApis();
   }, []);
 
   return (
